@@ -1,6 +1,6 @@
 {
   "name": "perflogger",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Easy Performance Logging",
   "main": "src/PerfLogger.js",
   "homepage": "https://github.com/dogfoodsilo4/perflogger",

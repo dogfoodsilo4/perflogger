@@ -10,6 +10,14 @@ var PerfLogger = (function()
     function PerfLogger(logFile)
     {
         this._logFile = logFile;
+        // Increment the file name if it already exists
+        var i = 0;
+        while (fs.existsSync(this._logFile))
+        {
+            var arr = logFile.split('.');
+            var ext = arr.pop();
+            this._logFile = arr.join() + "_" + ++i + "." + ext;
+        };
     }
 
     PerfLogger.prototype.GetLogArray = function()
@@ -36,6 +44,11 @@ var PerfLogger = (function()
 
     PerfLogger.prototype.End = function(cb)
     {
+        cb = cb || function()
+        {
+            return;
+        };
+
         this.Log("End Logging");
 
         this.UpdateRunningTotals(() =>
